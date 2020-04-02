@@ -1,0 +1,504 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 28, 2020 at 01:56 PM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `read`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `angkatan`
+--
+
+CREATE TABLE `angkatan` (
+  `id` int(3) NOT NULL,
+  `angkatan` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_users`
+--
+
+CREATE TABLE `ci_users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` tinyint(4) NOT NULL DEFAULT '1',
+  `is_active` tinyint(4) NOT NULL DEFAULT '1',
+  `is_verify` tinyint(4) NOT NULL DEFAULT '0',
+  `is_admin` tinyint(4) NOT NULL DEFAULT '0',
+  `token` varchar(255) NOT NULL,
+  `password_reset_code` varchar(255) NOT NULL,
+  `last_ip` varchar(30) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ci_users`
+--
+
+INSERT INTO `ci_users` (`id`, `username`, `email`, `password`, `role`, `is_active`, `is_verify`, `is_admin`, `token`, `password_reset_code`, `last_ip`, `created_at`, `updated_at`) VALUES
+(3, 'admin', 'admin@ppdsinternasolo.id', '$2y$10$DtFLFRrZIikuMDo7mg6lruOUbEKYdCUZXgnvn/lZeRMJyT/9HwFMq', 0, 0, 1, 1, '', '', '', '2017-09-29 10:09:44', '2020-03-25 00:00:00'),
+(78, 'dpa', 'dpa@fk.uns.ac.id', '$2y$10$XH3W7mkdZga7zI4m0qQKse0DPUuyzG6iuM87VebId48csxMnbM6im', 2, 1, 1, 0, '', '', '', '2020-03-25 00:00:00', '2020-03-25 00:00:00'),
+(79, 'indra', 'indrapermana@gmail.com', '$2y$10$XH3W7mkdZga7zI4m0qQKse0DPUuyzG6iuM87VebId48csxMnbM6im', 3, 1, 0, 0, '', '', '', '2020-03-25 00:00:00', '0000-00-00 00:00:00'),
+(80, 'admin_nefro', 'admin_nefro@ppdsinternasolo.id', '$2y$10$XH3W7mkdZga7zI4m0qQKse0DPUuyzG6iuM87VebId48csxMnbM6im', 1, 1, 0, 0, '', '', '', '2020-03-25 00:00:00', '0000-00-00 00:00:00'),
+(81, 'fulanah', 'fulanah@gmail.com', '$2y$10$XH3W7mkdZga7zI4m0qQKse0DPUuyzG6iuM87VebId48csxMnbM6im', 3, 1, 0, 0, '', '', '', '2020-03-25 00:00:00', '0000-00-00 00:00:00'),
+(83, 'maryam', 'maryam@gmail.com', '$2y$10$XH3W7mkdZga7zI4m0qQKse0DPUuyzG6iuM87VebId48csxMnbM6im', 3, 1, 0, 0, '', '', '', '2020-03-25 00:00:00', '0000-00-00 00:00:00'),
+(84, 'Nasywa', 'nasywa@gmail.com', '$2y$10$OsorKm/SwMXMppEi9pRlL.ZKeph2Yjp/RU95K.iv6yc0o7/QWOYsi', 3, 1, 1, 0, '', '', '', '2020-03-28 00:00:00', '2020-03-28 00:00:00'),
+(85, 'ane', 'ane@gmail.com', '$2y$10$gJI6EZLUdwI2cAZh.gDIiOf.o7RvWDtgWULJpDvoQYuSrZxCQ8kpS', 3, 1, 1, 0, '', '', '', '2020-03-28 00:00:00', '2020-03-28 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `divisi`
+--
+
+CREATE TABLE `divisi` (
+  `id` int(5) NOT NULL,
+  `divisi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pj_divisi` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `divisi`
+--
+
+INSERT INTO `divisi` (`id`, `divisi`, `pj_divisi`) VALUES
+(1, 'Nefro', 0),
+(2, 'Gastro', 0),
+(3, 'Tropik', 0),
+(4, 'Endo', 0),
+(5, 'HOM', 0),
+(6, 'Rheu', 0),
+(7, 'Pulmo', 0),
+(8, 'Cardio', 0),
+(9, 'Geri', 0),
+(10, 'Alergy', 0),
+(11, 'Psiko', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dosen`
+--
+
+CREATE TABLE `dosen` (
+  `id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL,
+  `nip` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lengkap` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telp` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `dosen`
+--
+
+INSERT INTO `dosen` (`id`, `user_id`, `nip`, `nama_lengkap`, `alamat`, `telp`, `gender`, `photo`) VALUES
+(1, 78, '197408292008121002', 'Dr. dr. Agung Susanto, Sp.PD, FINASIM', '', '', 'l', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ilmiah`
+--
+
+CREATE TABLE `ilmiah` (
+  `id` int(11) NOT NULL,
+  `judul_ilmiah` varchar(255) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_residen` int(5) DEFAULT NULL,
+  `id_tahap` int(5) DEFAULT NULL,
+  `id_kategori` int(3) NOT NULL,
+  `nilai` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ilmiah`
+--
+
+INSERT INTO `ilmiah` (`id`, `judul_ilmiah`, `deskripsi`, `file`, `date`, `id_residen`, `id_tahap`, `id_kategori`, `nilai`) VALUES
+(57, 'Association of preoperative glucose concentration with myocardial injury and death after non-cardiac surgery (GlucoVISION): a prospective cohort study', '', '', '2020-03-28 06:51:41', 1, 1, 1, NULL),
+(58, 'Lorem ipsum dolor ist amet', '', '', '2020-03-28 16:27:08', 1, 1, 2, NULL),
+(59, 'Lorem ipsum dolor ist amet lorem consteteur eut para', '', '', '2020-03-28 16:27:08', 2, 1, 1, NULL),
+(60, ' dolor ist amet lorem consteteur eut para', '', '', '2020-03-28 16:27:08', 2, 1, 2, NULL),
+(61, ' ist amet lorem consteteur eut para lorem', '', '', '2020-03-28 16:27:08', 1, 1, 3, NULL),
+(62, 'prospective cohort study Glucose', '', '', '2020-03-28 06:51:41', 1, 1, 4, NULL),
+(63, 'prospective cohort study Glucose Concentration', '', '', '2020-03-28 06:51:41', 1, 2, 5, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori_ilmiah`
+--
+
+CREATE TABLE `kategori_ilmiah` (
+  `id` int(3) NOT NULL,
+  `kategori` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahap` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `kategori_ilmiah`
+--
+
+INSERT INTO `kategori_ilmiah` (`id`, `kategori`, `tahap`) VALUES
+(1, 'Pemeriksaan Fisik', 1),
+(2, 'Sindroma Klinis', 1),
+(3, 'Laporan Kasus', 1),
+(4, 'Mini CX', 1),
+(5, 'Pretest', 2),
+(6, 'Postest', 2),
+(7, 'Tinjauan Pustaka', 2),
+(8, 'Laporan Kasus', 2),
+(9, 'Journal Reading ', 2),
+(10, 'DOPS', 2),
+(11, 'Case Based Discussion', 2),
+(12, 'Proposal Tesis', 2),
+(13, 'Tesis', 2),
+(14, 'Ilmiah Nasional', 2),
+(15, 'Etika/Kerjasama', 2),
+(16, 'Tugas Tambahan', 2),
+(17, 'SIP Residen ', 3),
+(18, 'Berita Acara Proposal Tesis', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `residen`
+--
+
+CREATE TABLE `residen` (
+  `id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL,
+  `nim` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lengkap` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tempat_lahir` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_lahir` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telp` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` char(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `angkatan` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lulus` char(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tahun_lulus` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `residen`
+--
+
+INSERT INTO `residen` (`id`, `user_id`, `nim`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `telp`, `gender`, `angkatan`, `photo`, `lulus`, `tahun_lulus`) VALUES
+(1, 79, 'S961702007', 'dr. Indra Setya Permana', 'Cilacap', '10 September 1985', 'Fajar Timur AF 22, Banjar Sari, Surakarta', '081328726872', 'l', '2017', '', NULL, NULL),
+(2, 81, 'S961702007', 'dr. Fulanah', 'Yogyakarta', '12 Juni 1986', 'Jl. Brawijaya', '082345667765', 'p', '2017', '', NULL, NULL),
+(4, 83, 'S941702007', 'dr. Maryam', 'Bantul', '21 Mei 1985', 'Kasihan Bantul', '087876546899', 'p', '2017', '', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `residen_divisi`
+--
+
+CREATE TABLE `residen_divisi` (
+  `id` int(10) NOT NULL,
+  `id_residen` int(5) NOT NULL,
+  `id_divisi` int(4) NOT NULL,
+  `end_date` datetime NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `residen_divisi`
+--
+
+INSERT INTO `residen_divisi` (`id`, `id_residen`, `id_divisi`, `end_date`, `date`) VALUES
+(1, 1, 1, '2021-02-20 00:00:00', '0000-00-00 00:00:00'),
+(2, 1, 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `residen_tahap`
+--
+
+CREATE TABLE `residen_tahap` (
+  `id` int(10) NOT NULL,
+  `id_residen` int(5) NOT NULL,
+  `tahap` char(4) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `status` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `residen_tahap`
+--
+
+INSERT INTO `residen_tahap` (`id`, `id_residen`, `tahap`, `start_date`, `end_date`, `status`, `date`) VALUES
+(1, 1, '1', '2020-01-01 00:00:00', '2020-02-29 00:00:00', 0, '0000-00-00 00:00:00'),
+(2, 1, '2a', '2020-03-01 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(3, 2, '1', '2020-01-01 00:00:00', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(4, 4, '1', '2020-01-01 18:21:17', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `residen_tod`
+--
+
+CREATE TABLE `residen_tod` (
+  `id` int(10) NOT NULL,
+  `id_residen` int(5) DEFAULT NULL,
+  `id_tod` int(5) DEFAULT NULL,
+  `id_divisi` int(5) DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `residen_tod`
+--
+
+INSERT INTO `residen_tod` (`id`, `id_residen`, `id_tod`, `id_divisi`, `end_date`) VALUES
+(1, 1, 1, 1, NULL),
+(2, 2, 1, 2, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tod`
+--
+
+CREATE TABLE `tod` (
+  `id` int(5) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tod`
+--
+
+INSERT INTO `tod` (`id`, `start_date`, `end_date`) VALUES
+(1, '2020-01-01', '2020-02-29');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `angkatan`
+--
+ALTER TABLE `angkatan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ci_users`
+--
+ALTER TABLE `ci_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `divisi`
+--
+ALTER TABLE `divisi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dosen`
+--
+ALTER TABLE `dosen`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ilmiah`
+--
+ALTER TABLE `ilmiah`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_residen` (`id_residen`),
+  ADD KEY `id_kategori` (`id_kategori`),
+  ADD KEY `ilmiah_tahap` (`id_tahap`);
+
+--
+-- Indexes for table `kategori_ilmiah`
+--
+ALTER TABLE `kategori_ilmiah`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `residen`
+--
+ALTER TABLE `residen`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `residen_divisi`
+--
+ALTER TABLE `residen_divisi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_residen_divisi_residen` (`id_residen`),
+  ADD KEY `FK_residen_divisi_divisi` (`id_divisi`);
+
+--
+-- Indexes for table `residen_tahap`
+--
+ALTER TABLE `residen_tahap`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_residen_tahap_residen` (`id_residen`);
+
+--
+-- Indexes for table `residen_tod`
+--
+ALTER TABLE `residen_tod`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_residen_tod_residen` (`id_residen`),
+  ADD KEY `FK_residen_tod_tod` (`id_tod`),
+  ADD KEY `FK_residen_tod_divisi` (`id_divisi`);
+
+--
+-- Indexes for table `tod`
+--
+ALTER TABLE `tod`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `angkatan`
+--
+ALTER TABLE `angkatan`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ci_users`
+--
+ALTER TABLE `ci_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+
+--
+-- AUTO_INCREMENT for table `divisi`
+--
+ALTER TABLE `divisi`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `dosen`
+--
+ALTER TABLE `dosen`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `ilmiah`
+--
+ALTER TABLE `ilmiah`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `kategori_ilmiah`
+--
+ALTER TABLE `kategori_ilmiah`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `residen`
+--
+ALTER TABLE `residen`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `residen_divisi`
+--
+ALTER TABLE `residen_divisi`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `residen_tahap`
+--
+ALTER TABLE `residen_tahap`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `residen_tod`
+--
+ALTER TABLE `residen_tod`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tod`
+--
+ALTER TABLE `tod`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ilmiah`
+--
+ALTER TABLE `ilmiah`
+  ADD CONSTRAINT `ilmiah_ibfk_1` FOREIGN KEY (`id_residen`) REFERENCES `residen` (`id`),
+  ADD CONSTRAINT `ilmiah_kat` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_ilmiah` (`id`),
+  ADD CONSTRAINT `ilmiah_tahap` FOREIGN KEY (`id_tahap`) REFERENCES `residen_tahap` (`id`);
+
+--
+-- Constraints for table `residen`
+--
+ALTER TABLE `residen`
+  ADD CONSTRAINT `FK_residen_ci_users` FOREIGN KEY (`user_id`) REFERENCES `ci_users` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `residen_divisi`
+--
+ALTER TABLE `residen_divisi`
+  ADD CONSTRAINT `FK_residen_divisi_divisi` FOREIGN KEY (`id_divisi`) REFERENCES `divisi` (`id`),
+  ADD CONSTRAINT `FK_residen_divisi_residen` FOREIGN KEY (`id_residen`) REFERENCES `residen` (`id`);
+
+--
+-- Constraints for table `residen_tahap`
+--
+ALTER TABLE `residen_tahap`
+  ADD CONSTRAINT `FK_residen_tahap_residen` FOREIGN KEY (`id_residen`) REFERENCES `residen` (`id`);
+
+--
+-- Constraints for table `residen_tod`
+--
+ALTER TABLE `residen_tod`
+  ADD CONSTRAINT `FK_residen_tod_divisi` FOREIGN KEY (`id_divisi`) REFERENCES `divisi` (`id`),
+  ADD CONSTRAINT `FK_residen_tod_residen` FOREIGN KEY (`id_residen`) REFERENCES `residen` (`id`),
+  ADD CONSTRAINT `FK_residen_tod_tod` FOREIGN KEY (`id_tod`) REFERENCES `tod` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
