@@ -5,9 +5,10 @@ class Admin_Controller extends MY_Controller
     {
         parent::__construct();
         
-        if( !($this->session->userdata('is_admin')) )
+        if( !($this->session->userdata('role') == 1 ) )
         {
-            redirect('residen');
+            redirect('residen/dashboard_residen');          
+            
         } 
     }
 }

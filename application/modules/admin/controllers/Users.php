@@ -5,8 +5,8 @@ class Users extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin/user_model', 'user_model');
-		$this->load->model('admin/profile_model', 'profile_model');
+		$this->load->model('user_model', 'user_model');
+		$this->load->model('profile/profile_model', 'profile_model');
 		$this->load->library('datatable'); // loaded my custom serverside datatable library
 	}
 
@@ -18,10 +18,9 @@ class Users extends MY_Controller
 		$data['role'] = $role;
 		$data['users'] = $this->user_model->get_users($role);
 		$data['count_all'] = $this->user_model->count_all_users_by_role('');
-		$data['count_admin'] = $this->user_model->count_all_users_by_role(1);
-		$data['count_tu'] = $this->user_model->count_all_users_by_role(2);
-		$data['count_reviewer'] = $this->user_model->count_all_users_by_role(3);
-		$data['count_dosen'] = $this->user_model->count_all_users_by_role(4);
+		$data['count_admin'] = $this->user_model->count_all_users_by_role(4);
+		$data['count_dp'] = $this->user_model->count_all_users_by_role(2);
+		$data['count_residen'] = $this->user_model->count_all_users_by_role(3);
 		$data['view'] = 'admin/users/user_list';
 
 		$this->load->view('layout', $data);

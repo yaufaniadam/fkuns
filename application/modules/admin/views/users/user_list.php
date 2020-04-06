@@ -32,9 +32,9 @@
 
 			<div class="btn-group" role="group" aria-label="Basic example">
 				<a href="<?= base_url('admin/users/'); ?>" class="btn <?= ($role == '') ? 'btn-warning' : 'btn-default'; ?>">Semua (<?= $count_all; ?>)</a>
-				<a href="<?= base_url('admin/users/index/1'); ?>" class="btn <?= ($role == 1) ? 'btn-warning' : 'btn-default'; ?>">Admin Divisi (<?= $count_admin; ?>)</a>
-				<a href="<?= base_url('admin/users/index/2'); ?>" class="btn <?= ($role == 2) ? 'btn-warning' : 'btn-default'; ?>">Dosen Pembimbing (<?= $count_tu; ?>)</a>
-				<a href="<?= base_url('admin/users/index/3'); ?>" class="btn <?= ($role == 3) ? 'btn-warning' : 'btn-default'; ?>">Residen (<?= $count_reviewer; ?>)</a>
+				<a href="<?= base_url('admin/users/index/4'); ?>" class="btn <?= ($role == 4) ? 'btn-warning' : 'btn-default'; ?>">Admin Divisi (<?= $count_admin; ?>)</a>
+				<a href="<?= base_url('admin/users/index/2'); ?>" class="btn <?= ($role == 2) ? 'btn-warning' : 'btn-default'; ?>">Dosen Pembimbing (<?= $count_dp; ?>)</a>
+				<a href="<?= base_url('admin/users/index/3'); ?>" class="btn <?= ($role == 3) ? 'btn-warning' : 'btn-default'; ?>">Residen (<?= $count_residen; ?>)</a>
 			</div>
 			<br>
 			<br>

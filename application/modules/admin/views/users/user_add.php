@@ -64,7 +64,7 @@
                     <div>
                       <select name="role" class="form-control">
                         <option value="">Pilih Role</option>
-                        <option value="1">Admin Divisi</option>
+                        <option value="4">Admin Divisi</option>
                         <option value="2">Dosen Pembimbing</option>
                         <option value="3">Residen</option>
                       </select>

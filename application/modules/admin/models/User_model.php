@@ -12,12 +12,12 @@
 			
 			if($role != '') {		
 				return $this->db->query("SELECT a.* FROM ci_users a
-					WHERE a.is_admin != 1 AND a.role=$role
+					WHERE a.role!= 1 AND a.role=$role
 					");
 			}	else { 
 				return $this->db->query("SELECT a.* FROM ci_users a
 					
-					WHERE a.is_admin != 1 ");
+					WHERE a.role != 1 ");
 			}			
 
 		}
@@ -25,10 +25,11 @@
 			// Count total users by role
 		public function count_all_users_by_role($role){
 
-			if($role != '') {		
+			if($role != '') {						
 				$this->db->where('role',$role);
+			} else {
+				$this->db->where('role !=',1);
 			}
-			$this->db->where('is_admin','0');
 			return $this->db->count_all_results('ci_users');
 		}
 
@@ -63,7 +64,7 @@
 			if($this->session->userdata('user_search_to')!='')
 			$wh[]=" `created_at` <= '".date('Y-m-d', strtotime($this->session->userdata('user_search_to')))."'";
 
-			$wh[] = " is_admin = 0";
+			$wh[] = " role= 0";
 			if(count($wh)>0)
 			{
 				$WHERE = implode(' and ',$wh);

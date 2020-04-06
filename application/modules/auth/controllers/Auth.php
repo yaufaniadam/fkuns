@@ -7,15 +7,7 @@
 		}
 		//--------------------------------------------------------------
 		public function index(){
-			if($this->session->has_userdata('is_login')) {
-				
-				if($this->session->userdata('is_admin')) {
-					redirect('admin/dashboard');
-				} else {
-					redirect('admin/dashboard_user');	
-				}
-
-			} else{
+			if(!$this->session->has_userdata('is_login')) {		
 				redirect ('auth/login');
 			}
 		}
@@ -34,17 +26,11 @@
 					'password' => $this->input->post('password')
 					);
 					$result = $this->auth_model->login($data);
-					if($result){
-						if($result['is_verify'] == 0){
-				    		$this->session->set_flashdata('warning', 'Please verify your email address!');
-							redirect(base_url('auth/login'));
-							exit;
-				    	}
+					if($result){					
 				    	
 						$user_data = array(
 							'user_id' => $result['id'],
 							'username' => $result['username'],
-							'is_admin' => $result['is_admin'],
 							'role' => $result['role'],
 							'is_login' => TRUE,
 										

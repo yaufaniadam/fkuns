@@ -25,7 +25,7 @@
 
 		//--------------------------------------------------------------------
 		public function email_verification($code){
-			$this->db->select('email, token, is_active');
+			$this->db->select('email, token');
 			$this->db->from('ci_users');
 			$this->db->where('token', $code);
 			$query = $this->db->get();
@@ -33,7 +33,7 @@
 			$match = count($result);
 			if($match > 0){
 				$this->db->where('token', $code);
-				$this->db->update('ci_users', array('is_verify' => 1, 'token'=> ''));
+				$this->db->update('ci_users', array('token'=> ''));
 				return true;
 			}
 			else{
