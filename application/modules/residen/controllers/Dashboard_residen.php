@@ -6,8 +6,8 @@
 		}
 
 		public function index(){
-			$data['view'] = 'admin/dashboard/index'; 
-			$this->load->view('admin/layout', $data);
+			$data['view'] = 'residen/dashboard/index'; 
+			$this->load->view('layout/layout', $data);
 		}
 		
 	}

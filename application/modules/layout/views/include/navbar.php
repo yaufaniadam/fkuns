@@ -14,7 +14,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link" href="<?=base_url('profile'); ?>">
-          <i class="fas fa-user"></i> &nbsp; <?php echo $this->session->userdata("firstname"); ?>         
+          <i class="fas fa-user"></i> &nbsp; <?php echo $this->session->userdata("username"); ?>         
         </a>        
       </li>  
       <li class="nav-item">

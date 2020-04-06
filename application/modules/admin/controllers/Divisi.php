@@ -24,7 +24,7 @@ class Users extends MY_Controller
 		$data['count_dosen'] = $this->user_model->count_all_users_by_role(4);
 		$data['view'] = 'admin/users/user_list';
 
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 
 
@@ -41,7 +41,7 @@ class Users extends MY_Controller
 
 			if ($this->form_validation->run() == FALSE) {
 				$data['view'] = 'admin/users/user_add';
-				$this->load->view('layout', $data);
+				$this->load->view('layout/layout', $data);
 			} else {
 
 				$upload_path = './uploads/fotoProfil';
@@ -86,7 +86,7 @@ class Users extends MY_Controller
 		} else {
 			// $data['prodi'] = $this->prodi_model->get_all_prodi();
 			$data['view'] = 'admin/users/user_add';
-			$this->load->view('layout', $data);
+			$this->load->view('layout/layout', $data);
 		}
 	}
 
@@ -101,7 +101,7 @@ class Users extends MY_Controller
 			if ($this->form_validation->run() == FALSE) {
 				$data['user'] = $this->user_model->get_user_by_id($id);
 				$data['view'] = 'admin/users/user_edit';
-				$this->load->view('layout', $data);
+				$this->load->view('layout/layout', $data);
 			} else {
 
 				$upload_path = './uploads/fotoProfil';
@@ -141,7 +141,7 @@ class Users extends MY_Controller
 		} else {
 			$data['user'] = $this->user_model->get_user_by_id($id);
 			$data['view'] = 'admin/users/user_edit';
-			$this->load->view('layout', $data);
+			$this->load->view('layout/layout', $data);
 		}
 	}
 
@@ -150,7 +150,7 @@ class Users extends MY_Controller
 		$data['user'] = $this->user_model->get_user_by_id($id);
 
 		$data['view'] = 'admin/users/detail';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 
 	public function del($id)

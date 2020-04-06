@@ -22,7 +22,7 @@ class Ilmiah extends MY_Controller
 		$data['title'] = 'Ilmiah';
 		//$data['deskripsi'] = 'Tampilkan semua ilmiah dari semua residen. dan semua tahap';
 		$data['view'] = 'ilmiah/index.php';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 	
 	public function tahap($tahap)
@@ -41,7 +41,7 @@ class Ilmiah extends MY_Controller
 		$data['title'] = 'Ilmiah Tahap '. $tahap;
 		//$data['deskripsi'] = 'Tampilkan semua ilmiah dari semua residen berdasarkan tahap';
 		$data['view'] = 'ilmiah/index.php';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 	public function divisi()
 	{		
@@ -59,7 +59,7 @@ class Ilmiah extends MY_Controller
 		$data['title'] = 'Ilmiah Semua Divisi ';
 		$data['deskripsi'] = 'Tampilkan semua ilmiah dari semua residen berdasarkan Divisi. Yg tampil hanya tahap 2a dan 2b saja';
 		$data['view'] = 'ilmiah/index.php';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 	
 }

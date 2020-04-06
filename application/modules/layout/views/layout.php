@@ -84,7 +84,13 @@ function indonesian_date ($timestamp = '', $date_format = 'j F Y', $suffix = 'WI
 		<aside class="main-sidebar elevation-4 sidebar-light-maroon">
 
 
-			<?php include('include/admin_sidebar.php'); ?>
+			<?php
+			if($this->session->userdata('role')==1) {
+				include('include/admin_sidebar.php'); 
+			}else {
+				include('include/residen_sidebar.php'); 
+			}
+			?>
 
 
 		</aside>

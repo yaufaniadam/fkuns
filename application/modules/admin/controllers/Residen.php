@@ -19,7 +19,7 @@ class Residen extends MY_Controller
 		$data['type'] = 'all_residen';
 		$data['deskripsi'] = 'Tampilkan semua residen baik yang masih aktif maupun yng sudah lulus';
 		$data['view'] = 'residen/index';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 
 	public function tahap()
@@ -37,7 +37,7 @@ class Residen extends MY_Controller
 		$data['type'] = 'residen_by_tahap';
 		$data['deskripsi'] = 'Tampilkan semua residen aktif dan Tahap yang ditempuh saat ini';
 		$data['view'] = 'residen/index';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 
 	public function tahap_by_residen($id_residen)
@@ -55,7 +55,7 @@ class Residen extends MY_Controller
 		$data['type'] = 'tahap_spesifik_residen';
 		$data['deskripsi'] = 'Tampilkan semua tahap spesifik residen';
 		$data['view'] = 'residen/index';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 
 	public function divisi()
@@ -77,7 +77,7 @@ class Residen extends MY_Controller
 		$data['type'] = 'residen_by_divisi';
 		$data['deskripsi'] = 'Tampilkan semua residen yang sudah menempuh tahap 2a dan 2b serta divisinya yg ditempuh saat ini';
 		$data['view'] = 'residen/index';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 
 	public function divisi_by_residen($id_residen)
@@ -95,7 +95,7 @@ class Residen extends MY_Controller
 		$data['type'] = 'divisi_spesifik_residen';
 		$data['deskripsi'] = 'Tampilkan semua divisi spesifik residen';
 		$data['view'] = 'residen/index';
-		$this->load->view('layout', $data);
+		$this->load->view('layout/layout', $data);
 	}
 
 }

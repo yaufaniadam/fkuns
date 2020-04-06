@@ -7,7 +7,7 @@
 
 		public function index(){
 			$data['view'] = 'dashboard/index'; 
-			$this->load->view('layout', $data);
+			$this->load->view('layout/layout', $data);
 		}
 		
 	}
